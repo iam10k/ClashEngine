@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "editor.autoIndent": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "tslint.configFile": "tslint.json",
+  "tslint.enable": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  }
+}
