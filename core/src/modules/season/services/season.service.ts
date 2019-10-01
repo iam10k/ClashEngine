@@ -1,10 +1,13 @@
-import { Season, SeasonCreate, SeasonDetailed, SeasonUpdate } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Brackets, Repository } from 'typeorm';
 import { API_ERROR } from '../../../constants';
 import { DataConstraintException, LockConstraintException } from '../../../core/exceptions';
+import { SeasonCreate } from '../dtos/season-create.dto';
+import { SeasonDetailed } from '../dtos/season-detailed.dto';
+import { SeasonUpdate } from '../dtos/season-update.dto';
+import { Season } from '../dtos/season.dto';
 import { SeasonEntity } from '../entities';
 
 @Injectable()

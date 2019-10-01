@@ -1,6 +1,11 @@
-import { Game, GameCreate, GameFindOptions, GamePagedResponse, GameUpdate, ValidationQuery } from '@clash/common';
+import { ValidationQuery } from '@clash/common';
 import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ApiOkResponse, ApiUseTags } from '@nestjs/swagger';
+import { GameCreate } from '../dtos/game-create.dto';
+import { GameFindOptions } from '../dtos/game-find-options.dto';
+import { GamePagedResponse } from '../dtos/game-paged-response.dto';
+import { GameUpdate } from '../dtos/game-update.dto';
+import { Game } from '../dtos/game.dto';
 import { GameService } from '../services/game.service';
 
 @ApiUseTags('games')

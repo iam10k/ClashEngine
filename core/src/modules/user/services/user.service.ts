@@ -1,4 +1,4 @@
-import { User, UserCore, UserCreate, UserDetail, UserFindOptions, UserPagedResponse, UserUpdate } from '@clash/common';
+import { UserCore, UserCreate, UserDetail } from '@clash/common';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
@@ -9,6 +9,10 @@ import { API_CONST } from '../../../constants/api.constant';
 import { DataConstraintException } from '../../../core/exceptions';
 import { SqlUtil } from '../../../utils';
 import { UserCoreEntity } from '../core';
+import { UserFindOptions } from '../dtos/user-find-options.dto';
+import { UserPagedResponse } from '../dtos/user-paged-response.dto';
+import { UserUpdate } from '../dtos/user-update.dto';
+import { User } from '../dtos/user.dto';
 import { UserDetailEntity, UsernameHistoryEntity } from '../entities';
 
 @Injectable()

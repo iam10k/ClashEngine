@@ -1,8 +1,9 @@
-import { GameOption, GameOptionUpdate } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { FindConditions, Repository } from 'typeorm';
+import { GameOptionUpdate } from '../dtos/game-option-update.dto';
+import { GameOption } from '../dtos/game-option.dto';
 import { GameOptionEntity } from '../entities';
 
 @Injectable()

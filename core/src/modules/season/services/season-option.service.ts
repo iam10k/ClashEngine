@@ -1,10 +1,11 @@
-import { SeasonOption, SeasonOptionUpdate } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { FindConditions, Repository } from 'typeorm';
 import { API_ERROR } from '../../../constants';
 import { LockConstraintException } from '../../../core/exceptions';
+import { SeasonOptionUpdate } from '../dtos/season-option-update.dto';
+import { SeasonOption } from '../dtos/season-option.dto';
 import { SeasonEntity, SeasonOptionEntity } from '../entities';
 
 @Injectable()

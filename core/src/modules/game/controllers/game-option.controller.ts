@@ -1,6 +1,7 @@
-import { GameOption, GameOptionUpdate } from '@clash/common';
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
+import { GameOptionUpdate } from '../dtos/game-option-update.dto';
+import { GameOption } from '../dtos/game-option.dto';
 import { GameOptionService } from '../services/game-option.service';
 
 @Controller('/games/:gameId/options')

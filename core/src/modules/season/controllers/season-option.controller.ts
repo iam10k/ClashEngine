@@ -1,6 +1,7 @@
-import { SeasonOption, SeasonOptionUpdate } from '@clash/common';
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
+import { SeasonOptionUpdate } from '../dtos/season-option-update.dto';
+import { SeasonOption } from '../dtos/season-option.dto';
 import { SeasonOptionService } from '../services/season-option.service';
 
 @Controller('/seasons/:seasonId/options')

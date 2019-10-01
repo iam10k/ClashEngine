@@ -1,8 +1,9 @@
-import { MatchStatusType, MatchType } from '@clash/common';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, RelationId } from 'typeorm';
 import { CoreDataEntity } from '../../../core/entities';
 import { MatchTeamEntity } from '../../match-team/entities';
 import { SeasonEntity } from '../../season/entities';
+import { MatchStatusType } from '../enums/match-status.type';
+import { MatchType } from '../enums/match.type';
 
 @Entity('match')
 export class MatchEntity extends CoreDataEntity {

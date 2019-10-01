@@ -1,8 +1,10 @@
-import { MatchTeam, MatchTeamCreate, MatchTeamUpdate } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
+import { MatchTeamCreate } from '../dtos/match-team-create.dto';
+import { MatchTeamUpdate } from '../dtos/match-team-update.dto';
+import { MatchTeam } from '../dtos/match-team.dto';
 import { MatchTeamEntity } from '../entities';
 
 @Injectable()

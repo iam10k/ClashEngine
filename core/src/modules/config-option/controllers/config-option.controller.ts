@@ -1,6 +1,8 @@
-import { ConfigOption, ConfigOptionCreate, ConfigOptionUpdate } from '@clash/common';
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiImplicitParam, ApiUseTags } from '@nestjs/swagger';
+import { ConfigOptionCreate } from '../dtos/config-option-create.dto';
+import { ConfigOptionUpdate } from '../dtos/config-option-update.dto';
+import { ConfigOption } from '../dtos/config-option.dto';
 import { ConfigOptionService } from '../services/config-option.service';
 
 @ApiUseTags('config-options')

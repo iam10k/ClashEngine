@@ -1,9 +1,14 @@
-import { ArrayUtil, Match, MatchCreate, MatchFindOptions, MatchPagedResponse, MatchUpdate } from '@clash/common';
+import { ArrayUtil } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
 import { SqlUtil } from '../../../utils';
+import { MatchCreate } from '../dtos/match-create.dto';
+import { MatchFindOptions } from '../dtos/match-find-options.dto';
+import { MatchPagedResponse } from '../dtos/match-paged-response.dto';
+import { MatchUpdate } from '../dtos/match-update.dto';
+import { Match } from '../dtos/match.dto';
 import { MatchEntity } from '../entities';
 
 @Injectable()

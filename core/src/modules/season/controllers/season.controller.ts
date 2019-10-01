@@ -1,4 +1,4 @@
-import { ErrorResponse, Season, SeasonCreate, SeasonDetailed, SeasonUpdate } from '@clash/common';
+import { ErrorResponse } from '@clash/common';
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import {
   ApiImplicitParam,
@@ -7,6 +7,10 @@ import {
   ApiUnprocessableEntityResponse,
   ApiUseTags
 } from '@nestjs/swagger';
+import { SeasonCreate } from '../dtos/season-create.dto';
+import { SeasonDetailed } from '../dtos/season-detailed.dto';
+import { SeasonUpdate } from '../dtos/season-update.dto';
+import { Season } from '../dtos/season.dto';
 import { SeasonService } from '../services/season.service';
 
 @ApiUseTags('seasons')

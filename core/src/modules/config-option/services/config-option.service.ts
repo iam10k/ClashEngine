@@ -2,8 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
+import { ConfigOptionCreate } from '../dtos/config-option-create.dto';
+import { ConfigOptionUpdate } from '../dtos/config-option-update.dto';
+import { ConfigOption } from '../dtos/config-option.dto';
 import { ConfigOptionEntity } from '../entities';
-import { ConfigOption, ConfigOptionCreate, ConfigOptionUpdate } from '@clash/common';
 
 @Injectable()
 export class ConfigOptionService {

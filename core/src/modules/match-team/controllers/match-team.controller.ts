@@ -1,4 +1,4 @@
-import { ErrorResponse, MatchTeam, MatchTeamCreate, MatchTeamUpdate } from '@clash/common';
+import { ErrorResponse } from '@clash/common';
 import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import {
   ApiImplicitParam,
@@ -7,6 +7,9 @@ import {
   ApiUnprocessableEntityResponse,
   ApiUseTags
 } from '@nestjs/swagger';
+import { MatchTeamCreate } from '../dtos/match-team-create.dto';
+import { MatchTeamUpdate } from '../dtos/match-team-update.dto';
+import { MatchTeam } from '../dtos/match-team.dto';
 import { MatchTeamService } from '../services/match-team.service';
 
 @Controller()

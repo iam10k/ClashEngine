@@ -1,8 +1,10 @@
+import { ValidationQuery } from '@clash/common';
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { ApiImplicitParam, ApiOkResponse, ApiUseTags } from '@nestjs/swagger';
+import { MatchFindOptions } from '../dtos/match-find-options.dto';
+import { MatchPagedResponse } from '../dtos/match-paged-response.dto';
+import { Match } from '../dtos/match.dto';
 import { MatchService } from '../services/match.service';
-
-import { Match, MatchFindOptions, MatchPagedResponse, ValidationQuery } from '@clash/common';
 
 @Controller()
 @ApiUseTags('matches')

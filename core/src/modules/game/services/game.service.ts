@@ -1,9 +1,14 @@
-import { Game, GameCreate, GameFindOptions, GamePagedResponse, GameUpdate, Season } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
 import { SqlUtil } from '../../../utils';
+import { Season } from '../../season/dtos/season.dto';
+import { GameCreate } from '../dtos/game-create.dto';
+import { GameFindOptions } from '../dtos/game-find-options.dto';
+import { GamePagedResponse } from '../dtos/game-paged-response.dto';
+import { GameUpdate } from '../dtos/game-update.dto';
+import { Game } from '../dtos/game.dto';
 import { GameEntity } from '../entities';
 
 @Injectable()

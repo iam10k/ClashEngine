@@ -1,7 +1,10 @@
-import { UserCore, UserDetail, UserFindOptions, UserPagedResponse, UserUpdate, ValidationQuery } from '@clash/common';
+import { UserCore, UserDetail, ValidationQuery } from '@clash/common';
 import { Body, Controller, Get, Param, ParseIntPipe, Put, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOkResponse, ApiUseTags } from '@nestjs/swagger';
+import { UserFindOptions } from '../dtos/user-find-options.dto';
+import { UserPagedResponse } from '../dtos/user-paged-response.dto';
+import { UserUpdate } from '../dtos/user-update.dto';
 import { UserService } from '../services/user.service';
 
 @Controller('users')
