@@ -4,6 +4,7 @@ import { CoreModule } from './core/core.module';
 import { Config } from './core/models';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
+import { ProxyModule } from './proxy/proxy.module';
 
 @Module({
   providers: [],
@@ -18,7 +19,8 @@ import { UserModule } from './modules/user/user.module';
     }),
     CoreModule,
     AuthModule,
-    UserModule
+    UserModule,
+    ProxyModule
   ],
   exports: [ClashCoreModule]
 })

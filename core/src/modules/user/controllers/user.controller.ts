@@ -21,9 +21,8 @@ export class UserController {
 
   @Get('/me')
   @ApiOkResponse({ type: UserDetail })
-  getMe(): Promise<UserDetail> {
-    // return this.userService.getUserById();
-    return null;
+  getMe(@Req() req): Promise<UserDetail> {
+    return this.userService.getUserDetailById(req.user.id);
   }
 
   @Get('/:userId')

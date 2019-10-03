@@ -1,18 +1,14 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { Strategy } from 'passport-jwt';
 import { UserDetail } from '../dtos/user';
 import { JwtPayloadInterface } from '../interfaces';
-import { JWT_CONFIG_TOKEN, JwtConfig } from '../models';
 import { JwtTokenService } from '../services';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
-  constructor(
-    @Inject(JWT_CONFIG_TOKEN) private readonly jwtConfig: JwtConfig,
-    private readonly tokenService: JwtTokenService
-  ) {
+  constructor(private readonly tokenService: JwtTokenService) {
     super({
       passReqToCallback: true,
       jwtFromRequest: req => {
@@ -22,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         const secretKey = this.tokenService.createSecretKey(plainToClass(UserDetail, this.tokenService.decode(token)));
         done(null, secretKey);
       },
-      issuer: jwtConfig.issuer
+      issuer: tokenService.jwtConfig.issuer
     });
   }
 
