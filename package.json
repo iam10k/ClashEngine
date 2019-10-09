@@ -1,9 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "common",
-    "xapi",
-    "core"
+    "packages/*"
   ],
   "scripts": {
     "build": "lerna run build",
