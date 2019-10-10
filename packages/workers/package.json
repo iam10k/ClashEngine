@@ -1,11 +1,11 @@
 {
-  "name": "@clash/core",
+  "name": "@clash/workers",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -24,19 +24,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@clash/core": "0.0.1",
-    "@nestjs/common": "^6.0.0",
-    "@nestjs/core": "^6.0.0",
-    "@nestjs/passport": "^6.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "@nestjs/testing": "6.1.1",
-    "@types/express": "4.16.1",
-    "@types/jsonwebtoken": "^8.3.3"
   },
   "jest": {
     "moduleFileExtensions": [
