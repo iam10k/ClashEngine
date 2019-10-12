@@ -26,4 +26,10 @@ export class GameEntity extends CoreDataEntity {
 
   @OneToMany(() => GameOptionEntity, option => option.game)
   public options: GameOptionEntity[];
+
+  @Column()
+  public teamCount: number;
+
+  @Column()
+  public teamPlayers: number;
 }

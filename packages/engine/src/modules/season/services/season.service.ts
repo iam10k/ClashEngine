@@ -22,7 +22,7 @@ export class SeasonService {
 
   async findSeason(id: number): Promise<SeasonDetailed> {
     const seasonEntity: SeasonEntity = await this.seasonRepository.findOne({
-      relations: ['options', 'options.option'],
+      relations: ['options', 'options.configOption', 'game', 'game.seasons'],
       where: {
         id
       }

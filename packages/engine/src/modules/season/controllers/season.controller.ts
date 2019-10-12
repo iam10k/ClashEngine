@@ -1,5 +1,4 @@
-import { ErrorResponse } from '@clash/common';
-import { Season, SeasonCreate, SeasonDetailed, SeasonUpdate } from '@clash/common';
+import { ErrorResponse, Season, SeasonCreate, SeasonDetailed, SeasonUpdate } from '@clash/common';
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import {
   ApiImplicitParam,

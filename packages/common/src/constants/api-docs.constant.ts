@@ -2,7 +2,7 @@ import { AuthResponse, AuthToken } from '../dtos/auth';
 import { FilterOptions, PagedResponseMeta, PaginationOptions } from '../dtos/core';
 import { Game, GameOption, GamePagedResponse } from '../dtos/game';
 import { Match, MatchFindOptions } from '../dtos/match';
-import { MatchTeam, MatchTeamMember } from '../dtos/match-team';
+import { MatchTeam, MatchTeamCreate, MatchTeamMember } from '../dtos/match-team';
 import { SeasonCreate, SeasonDetailed, SeasonOption, SeasonUpdate } from '../dtos/season';
 import { User, UserDetail, UserFindOptions, UsernameHistory, UserPagedResponse } from '../dtos/user';
 import { MatchStatusType, MatchType, Order } from '../enums';
@@ -183,6 +183,12 @@ export const DOCS_GAME: ApiDocsInterface<Game> = {
     },
     currentSeason: {
       description: 'Current season of the game'
+    },
+    teamCount: {
+      description: ''
+    },
+    teamPlayers: {
+      description: ''
     }
   }
 };
@@ -224,6 +230,9 @@ export const DOCS_SEASON: ApiDocsInterface<SeasonDetailed> = {
     season: {
       description: '',
       type: 'integer'
+    },
+    game: {
+      description: ''
     },
     name: {
       description: '',
@@ -338,6 +347,16 @@ export const DOCS_MATCH_TEAM: ApiDocsInterface<MatchTeam> = {
     },
     score: {
       description: ''
+    }
+  }
+};
+
+export const DOCS_MATCH_TEAM_CREATE: ApiDocsInterface<MatchTeamCreate> = {
+  PROPS: {
+    members: {
+      description: '',
+      type: 'integer',
+      isArray: true
     }
   }
 };

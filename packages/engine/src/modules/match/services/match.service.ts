@@ -1,14 +1,27 @@
-import { ArrayUtil, Match, MatchCreate, MatchFindOptions, MatchPagedResponse, MatchUpdate } from '@clash/common';
+import {
+  ArrayUtil,
+  Match,
+  MatchCreate,
+  MatchFindOptions,
+  MatchPagedResponse,
+  MatchTeamMember,
+  MatchUpdate
+} from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
 import { SqlUtil } from '../../../utils';
+import { MatchTeamEntity } from '../../match-team/entities';
+import { MatchTeamMemberService } from '../../match-team/services/match-team-member.service';
 import { MatchEntity } from '../entities';
 
 @Injectable()
 export class MatchService {
-  constructor(@InjectRepository(MatchEntity) private readonly matchRepository: Repository<MatchEntity>) {}
+  constructor(
+    @InjectRepository(MatchEntity) private readonly matchRepository: Repository<MatchEntity>,
+    private readonly matchTeamMemberService: MatchTeamMemberService
+  ) {}
 
   async findMatches(findOptions: MatchFindOptions): Promise<MatchPagedResponse> {
     const query = this.matchRepository.createQueryBuilder('match');
@@ -50,10 +63,21 @@ export class MatchService {
 
   async addMatch(seasonId: number, matchCreate: MatchCreate): Promise<Match> {
     const matchEntity: MatchEntity = await this.matchRepository.save({
-      ...matchCreate,
-      season: { id: seasonId }
+      type: matchCreate.type,
+      season: { id: seasonId },
+      teams: matchCreate.teams.map(team => new MatchTeamEntity()) || []
     });
-    return plainToClass(Match, matchEntity, { excludeExtraneousValues: true });
+    const res: Match = plainToClass(Match, matchEntity, { excludeExtraneousValues: true });
+
+    // Create members for each team, using promise all
+    const promiseTasks: Array<Promise<MatchTeamMember[]>> = matchEntity.teams.map(
+      (team: MatchTeamEntity, index: number) =>
+        this.matchTeamMemberService.addMatchTeamMembers(team.id, matchCreate.teams[index].members)
+    );
+    await Promise.all(promiseTasks).then(values =>
+      values.forEach((teamMembers: MatchTeamMember[], index: number) => (res.teams[index].members = teamMembers))
+    );
+    return res;
   }
 
   async updateMatch(matchId: number, matchUpdate: MatchUpdate): Promise<Match> {

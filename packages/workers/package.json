@@ -4,8 +4,8 @@
   "description": "",
   "author": "",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/worker.js",
+  "typings": "./dist/worker.d.ts",
   "files": [
     "dist"
   ],
@@ -24,9 +24,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "camunda-external-task-client-js": "^1.2.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "jest": {
     "moduleFileExtensions": [
       "js",

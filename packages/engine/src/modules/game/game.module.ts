@@ -9,6 +9,7 @@ import { GameService } from './services/game.service';
 @Module({
   imports: [TypeOrmModule.forFeature(DB_ENTITIES)],
   providers: [GameService, GameOptionService],
-  controllers: [GameController, GameOptionController]
+  controllers: [GameController, GameOptionController],
+  exports: [GameService, GameOptionService]
 })
 export class GameModule {}

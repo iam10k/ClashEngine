@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, RelationId } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, RelationId } from 'typeorm';
 import { CoreDataEntity } from '../../../core/entities';
 import { MatchTeamEntity } from '../../match-team/entities';
 import { SeasonEntity } from '../../season/entities';
@@ -31,12 +31,13 @@ export class MatchEntity extends CoreDataEntity {
   @OneToOne(() => MatchTeamEntity, {
     nullable: true
   })
-  @JoinColumn()
   public winner: MatchTeamEntity;
 
   @RelationId((match: MatchEntity) => match.winner)
   public winnerId: number;
 
-  @OneToMany(() => MatchTeamEntity, matchTeam => matchTeam.match)
+  @OneToMany(() => MatchTeamEntity, matchTeam => matchTeam.match, {
+    cascade: ['insert']
+  })
   public teams: MatchTeamEntity[];
 }

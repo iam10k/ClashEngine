@@ -74,6 +74,8 @@ function generateGame(): GameEntity {
   game.name = faker.company.companyName();
   game.inactive = faker.random.boolean();
   game.image = faker.random.uuid() + '.png';
+  game.teamCount = Math.round(Math.random() * 2) + 1;
+  game.teamPlayers = Math.round(Math.random() * 6) + 1;
   return game;
 }
 

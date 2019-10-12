@@ -9,6 +9,7 @@ import { SeasonService } from './services/season.service';
 @Module({
   imports: [TypeOrmModule.forFeature(DB_ENTITIES)],
   providers: [SeasonService, SeasonOptionService],
-  controllers: [SeasonController, SeasonOptionController]
+  controllers: [SeasonController, SeasonOptionController],
+  exports: [SeasonService, SeasonOptionService]
 })
 export class SeasonModule {}

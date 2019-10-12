@@ -1,6 +1,13 @@
-import { Match, MatchFindOptions, MatchPagedResponse, ValidationQuery } from '@clash/common';
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { ApiImplicitParam, ApiOkResponse, ApiUseTags } from '@nestjs/swagger';
+import {
+  ErrorResponse,
+  Match,
+  MatchCreate,
+  MatchFindOptions,
+  MatchPagedResponse,
+  ValidationQuery
+} from '@clash/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { ApiImplicitParam, ApiOkResponse, ApiUnprocessableEntityResponse, ApiUseTags } from '@nestjs/swagger';
 import { MatchService } from '../services/match.service';
 
 @Controller()
@@ -20,6 +27,12 @@ export class MatchController {
     }
     findOptions.seasonId = seasonId;
     return this.findMatches(findOptions);
+  }
+
+  @Post('/seasons/:seasonId/matches')
+  @ApiUnprocessableEntityResponse({ type: ErrorResponse })
+  addMatch(@Param('seasonId', new ParseIntPipe()) seasonId: number, @Body() seasonCreate: MatchCreate): Promise<Match> {
+    return this.matchService.addMatch(seasonId, seasonCreate);
   }
 
   @Get('/matches')
