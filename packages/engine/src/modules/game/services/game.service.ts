@@ -24,19 +24,13 @@ export class GameService {
     }
 
     const [gameEntities, count]: [GameEntity[], number] = await query
-      .leftJoinAndSelect('game.seasons', 'season', 'season.startDate <= now() AND season.endDate >= now()')
+      .leftJoinAndSelect('game.currentSeason', 'currentSeason')
       .skip(findOptions.skip)
       .take(findOptions.take)
       .orderBy('game.name', findOptions.order)
       .getManyAndCount();
 
-    const games: Game[] = gameEntities.map(gameEntity => {
-      const seasons: Season[] = gameEntity.seasons.map(seasonEntity => {
-        return plainToClass(Season, seasonEntity, { excludeExtraneousValues: true });
-      });
-      const game = { ...gameEntity, seasons };
-      return plainToClass(Game, game, { excludeExtraneousValues: true });
-    });
+    const games: Game[] = plainToClass(Game, gameEntities, { excludeExtraneousValues: true });
 
     return new GamePagedResponse(games, count, findOptions);
   }

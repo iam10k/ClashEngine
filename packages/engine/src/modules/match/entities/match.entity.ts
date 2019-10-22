@@ -1,12 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, OneToOne, RelationId } from 'typeorm';
-import { CoreDataEntity } from '../../../core/entities';
+import { MatchStatusType, MatchType } from '@clash/common';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, RelationId } from 'typeorm';
+import { CoreModifiableEntity } from '../../../core/entities';
 import { MatchTeamEntity } from '../../match-team/entities';
 import { SeasonEntity } from '../../season/entities';
-import { MatchStatusType } from '../enums/match-status.type';
-import { MatchType } from '../enums/match.type';
 
 @Entity('match')
-export class MatchEntity extends CoreDataEntity {
+export class MatchEntity extends CoreModifiableEntity {
   @Column({
     type: 'enum',
     enum: MatchType,
@@ -28,16 +27,14 @@ export class MatchEntity extends CoreDataEntity {
   })
   public status: MatchStatusType;
 
-  @OneToOne(() => MatchTeamEntity, {
+  @Column({
     nullable: true
   })
-  public winner: MatchTeamEntity;
-
-  @RelationId((match: MatchEntity) => match.winner)
-  public winnerId: number;
+  public winner: number;
 
   @OneToMany(() => MatchTeamEntity, matchTeam => matchTeam.match, {
     cascade: ['insert']
   })
+  @JoinColumn()
   public teams: MatchTeamEntity[];
 }

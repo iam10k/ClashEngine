@@ -178,9 +178,6 @@ export const DOCS_GAME: ApiDocsInterface<Game> = {
       description: '',
       type: 'string'
     },
-    seasons: {
-      description: ''
-    },
     currentSeason: {
       description: 'Current season of the game'
     },
@@ -346,6 +343,12 @@ export const DOCS_MATCH_TEAM: ApiDocsInterface<MatchTeam> = {
       description: ''
     },
     score: {
+      description: ''
+    },
+    elo: {
+      description: ''
+    },
+    adjustedElo: {
       description: ''
     }
   }

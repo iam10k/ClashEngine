@@ -1,12 +1,12 @@
 import { Column, Entity, ManyToOne, OneToMany, OneToOne } from 'typeorm';
-import { CoreDataEntity } from '../../../core/entities';
+import { CoreModifiableEntity } from '../../../core/entities';
 import { SeasonEntity } from '../../season/entities';
 import { TournamentMatchEntity } from './tournament-match.entity';
 import { TournamentOptionsEntity } from './tournament-options.entity';
 import { TournamentTeamEntity } from './tournament-team.entity';
 
 @Entity('tournament')
-export class TournamentEntity extends CoreDataEntity {
+export class TournamentEntity extends CoreModifiableEntity {
   @Column({
     length: 64
   })

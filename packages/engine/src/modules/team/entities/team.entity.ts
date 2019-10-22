@@ -1,10 +1,10 @@
 import { Column, Entity, OneToMany } from 'typeorm';
-import { CoreDataEntity } from '../../../core/entities';
+import { CoreModifiableEntity } from '../../../core/entities';
 import { TournamentTeamEntity } from '../../tournament/entities';
 import { TeamMemberEntity } from './team-member.entity';
 
 @Entity('team')
-export class TeamEntity extends CoreDataEntity {
+export class TeamEntity extends CoreModifiableEntity {
   @Column({
     unique: true,
     length: 32

@@ -1,11 +1,10 @@
+import { MatchStatusType, MatchType } from '@clash/common';
 import { addMonths, endOfMonth, setDate, startOfMonth } from 'date-fns';
 import * as faker from 'faker';
 import { ConfigOptionEntity } from '../modules/config-option/entities';
 import { GameEntity, GameOptionEntity } from '../modules/game/entities';
 import { MatchTeamEntity } from '../modules/match-team/entities';
 import { MatchEntity } from '../modules/match/entities';
-import { MatchStatusType } from '../modules/match/enums/match-status.type';
-import { MatchType } from '../modules/match/enums/match.type';
 import { SeasonEntity, SeasonOptionEntity } from '../modules/season/entities';
 import { UserDetailEntity } from '../modules/user/entities';
 

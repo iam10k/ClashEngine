@@ -31,11 +31,8 @@ export class MatchTeamService {
   }
 
   async addMatchTeam(matchId: number, matchTeamCreate: MatchTeamCreate): Promise<MatchTeam> {
-    const matchTeamEntity: MatchTeamEntity = await this.matchTeamRepository.save({
-      memberIds: matchTeamCreate.members,
-      match: { id: matchId }
-    });
-    return plainToClass(MatchTeam, matchTeamEntity, { excludeExtraneousValues: true });
+    const matchTeams: MatchTeam[] = await this.addMatchTeams(matchId, [matchTeamCreate]);
+    return plainToClass(MatchTeam, matchTeams[0], { excludeExtraneousValues: true });
   }
 
   async addMatchTeams(matchId: number, matchTeamCreates: MatchTeamCreate[]): Promise<MatchTeam[]> {
@@ -46,7 +43,9 @@ export class MatchTeamService {
     const matchTeamEntities: MatchTeamEntity[] = await this.matchTeamRepository.save(
       matchTeamCreates.map(matchTeamCreate => {
         return {
-          match: { id: matchId }
+          ...matchTeamCreate,
+          match: { id: matchId },
+          members: undefined
         };
       })
     );

@@ -1,7 +1,11 @@
 import { DOCS_MATCH } from '../../constants';
-import { ClashModelProperty } from '../../decorators';
+import { ClashModelPropertyOptional } from '../../decorators';
+import { MatchStatusType } from '../../enums';
 
 export class MatchUpdate {
-  @ClashModelProperty(DOCS_MATCH.PROPS.winnerId)
+  @ClashModelPropertyOptional(DOCS_MATCH.PROPS.winnerId)
   public winnerId: number;
+
+  @ClashModelPropertyOptional(DOCS_MATCH.PROPS.status)
+  public status: MatchStatusType;
 }

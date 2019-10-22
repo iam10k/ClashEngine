@@ -1,10 +1,8 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index } from 'typeorm';
+import { CoreDataEntity } from '../../../core/entities';
 
 @Entity('user')
-export class UserCoreEntity {
-  @PrimaryGeneratedColumn()
-  public id: number;
-
+export class UserCoreEntity extends CoreDataEntity {
   @Column({
     nullable: true,
     length: 32

@@ -11,4 +11,10 @@ export class MatchTeam extends CoreUpdatableData {
 
   @ClashModelProperty(DOCS_MATCH_TEAM.PROPS.score)
   public score: number;
+
+  @ClashModelProperty(DOCS_MATCH_TEAM.PROPS.elo)
+  public elo: number;
+
+  @ClashModelProperty(DOCS_MATCH_TEAM.PROPS.adjustedElo)
+  public adjustedElo: number;
 }

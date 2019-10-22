@@ -1,8 +1,8 @@
 import { Column, ManyToOne } from 'typeorm';
-import { CoreDataEntity } from '../../../core/entities';
+import { CoreModifiableEntity } from '../../../core/entities';
 import { SeasonEntity } from '../../season/entities';
 
-export class EloEntity extends CoreDataEntity {
+export class EloEntity extends CoreModifiableEntity {
   @ManyToOne(() => SeasonEntity, {
     nullable: false
   })

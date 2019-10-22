@@ -1,9 +1,9 @@
 import { Column, Entity, ManyToOne, RelationId } from 'typeorm';
-import { CoreDataEntity } from '../../../core/entities';
+import { CoreModifiableEntity } from '../../../core/entities';
 import { UserEntity } from './user.entity';
 
 @Entity('username_history')
-export class UsernameHistoryEntity extends CoreDataEntity {
+export class UsernameHistoryEntity extends CoreModifiableEntity {
   @Column({
     length: 32,
     unique: false,

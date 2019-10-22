@@ -12,6 +12,8 @@ import { SeasonModule } from './modules/season/season.module';
 import { TeamModule } from './modules/team/team.module';
 import { TournamentModule } from './modules/tournament/tournament.module';
 import { UserModule } from './modules/user/user.module';
+import { QueueModule } from './modules/queue/queue.module';
+import { RegionModule } from './modules/region/region.module';
 
 @Module({
   imports: [
@@ -37,7 +39,9 @@ import { UserModule } from './modules/user/user.module';
     TeamModule,
     TournamentModule,
     EloModule,
-    MatchTeamModule
+    MatchTeamModule,
+    QueueModule,
+    RegionModule
   ]
 })
 export class AppModule {}

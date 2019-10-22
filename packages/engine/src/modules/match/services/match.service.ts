@@ -56,7 +56,7 @@ export class MatchService {
 
   async findMatch(matchId: number): Promise<Match> {
     const matchEntity: MatchEntity = await this.matchRepository.findOne(matchId, {
-      relations: ['teams']
+      relations: ['teams', 'teams.members', 'teams.members.user']
     });
     return plainToClass(Match, matchEntity, { excludeExtraneousValues: true });
   }
@@ -65,7 +65,13 @@ export class MatchService {
     const matchEntity: MatchEntity = await this.matchRepository.save({
       type: matchCreate.type,
       season: { id: seasonId },
-      teams: matchCreate.teams.map(team => new MatchTeamEntity()) || []
+      teams:
+        matchCreate.teams.map(team => {
+          return {
+            ...team,
+            members: undefined
+          };
+        }) || []
     });
     const res: Match = plainToClass(Match, matchEntity, { excludeExtraneousValues: true });
 
