@@ -5,6 +5,9 @@ import { MatchType } from '../../enums';
 import { MatchTeamCreate } from '../match-team';
 
 export class MatchCreate {
+  @ClashModelProperty(DOCS_MATCH.PROPS.regionKey)
+  public regionKey: string;
+
   @ClashModelProperty(DOCS_MATCH.PROPS.type)
   public type: MatchType;
 

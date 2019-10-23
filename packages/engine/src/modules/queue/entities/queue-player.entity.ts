@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, OneToOne, RelationId } from 'typeorm';
 import { CoreDataEntity } from '../../../core/entities';
 import { UserEloEntity } from '../../elo/entities';
 import { UserEntity } from '../../user/entities';
@@ -6,15 +6,18 @@ import { QueueEntity } from './queue.entity';
 
 @Entity('queue_player')
 export class QueuePlayerEntity extends CoreDataEntity {
-  @OneToOne(() => QueueEntity, queue => queue.players)
+  @ManyToOne(() => QueueEntity, queue => queue.players)
   @JoinColumn()
   public queue: QueueEntity;
 
-  @OneToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity)
   @JoinColumn()
   public user: UserEntity;
 
-  @OneToOne(() => QueueEntity)
+  @RelationId((queuePlayer: QueuePlayerEntity) => queuePlayer.user)
+  public userId: number;
+
+  @ManyToOne(() => UserEloEntity)
   @JoinColumn()
   public elo: UserEloEntity;
 }

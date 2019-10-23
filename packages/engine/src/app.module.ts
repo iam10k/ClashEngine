@@ -8,12 +8,12 @@ import { EloModule } from './modules/elo/elo.module';
 import { GameModule } from './modules/game/game.module';
 import { MatchTeamModule } from './modules/match-team/match-team.module';
 import { MatchModule } from './modules/match/match.module';
+import { QueueModule } from './modules/queue/queue.module';
+import { RegionModule } from './modules/region/region.module';
 import { SeasonModule } from './modules/season/season.module';
 import { TeamModule } from './modules/team/team.module';
 import { TournamentModule } from './modules/tournament/tournament.module';
 import { UserModule } from './modules/user/user.module';
-import { QueueModule } from './modules/queue/queue.module';
-import { RegionModule } from './modules/region/region.module';
 
 @Module({
   imports: [

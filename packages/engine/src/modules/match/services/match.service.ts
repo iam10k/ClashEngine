@@ -36,6 +36,9 @@ export class MatchService {
     if (findOptions.toDate) {
       hasWhere = SqlUtil.addWhere(query, hasWhere, 'match.createdAt <= :to', { to: findOptions.toDate });
     }
+    if (!ArrayUtil.isEmpty(findOptions.region)) {
+      hasWhere = SqlUtil.addWhere(query, hasWhere, 'match.region IN (:...region)', { region: findOptions.region });
+    }
     if (!ArrayUtil.isEmpty(findOptions.type)) {
       hasWhere = SqlUtil.addWhere(query, hasWhere, 'match.type IN (:...type)', { type: findOptions.type });
     }

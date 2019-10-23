@@ -2,6 +2,7 @@ import { MatchStatusType, MatchType } from '@clash/common';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, RelationId } from 'typeorm';
 import { CoreModifiableEntity } from '../../../core/entities';
 import { MatchTeamEntity } from '../../match-team/entities';
+import { RegionEntity } from '../../region/entities';
 import { SeasonEntity } from '../../season/entities';
 
 @Entity('match')
@@ -15,6 +16,12 @@ export class MatchEntity extends CoreModifiableEntity {
 
   @ManyToOne(() => SeasonEntity)
   public season: SeasonEntity;
+
+  @ManyToOne(() => RegionEntity)
+  public region: RegionEntity;
+
+  @RelationId((match: MatchEntity) => match.region)
+  public regionKey: string;
 
   @RelationId((match: MatchEntity) => match.season)
   public seasonId: number;

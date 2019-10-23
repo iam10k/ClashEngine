@@ -9,6 +9,9 @@ export class Match extends CoreUpdatableData {
   @ClashModelProperty(DOCS_MATCH.PROPS.seasonId)
   public seasonId: number;
 
+  @ClashModelProperty(DOCS_MATCH.PROPS.regionKey)
+  public regionKey: string;
+
   @ClashModelProperty(DOCS_MATCH.PROPS.type)
   public type: MatchType;
 

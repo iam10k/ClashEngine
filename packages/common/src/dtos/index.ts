@@ -4,6 +4,7 @@ export * from './core';
 export * from './game';
 export * from './match';
 export * from './match-team';
+export * from './queue';
 export * from './season';
 export * from './team';
 export * from './user';

@@ -15,16 +15,19 @@ export class MatchTeamEntity extends CoreModifiableEntity {
   public members: MatchTeamMemberEntity[];
 
   @Column({
+    type: 'numeric',
     nullable: true
   })
   public score: number;
 
   @Column({
+    type: 'numeric',
     nullable: true
   })
   public elo: number;
 
   @Column({
+    type: 'numeric',
     nullable: true
   })
   public adjustedElo: number;

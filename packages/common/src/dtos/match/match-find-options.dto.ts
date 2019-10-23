@@ -10,6 +10,10 @@ export class MatchFindOptions extends PaginationOptions {
   @Type(() => Number)
   public seasonId: number;
 
+  @ClashModelPropertyOptional(DOCS_MATCH_FIND_OPTIONS.PROPS.region)
+  @Transform(v => (v ? (v instanceof Array ? v : [v]) : undefined))
+  public region: string[];
+
   @ClashModelPropertyOptional(DOCS_MATCH_FIND_OPTIONS.PROPS.fromDate)
   @Transform(v => (isDate(v) ? v : v ? parseISO(v) : undefined))
   public fromDate: Date;

@@ -3,7 +3,7 @@ import { UserCoreEntity } from '../../user/core';
 import { EloEntity } from './elo.entity';
 
 @Entity('user_elo')
-@Unique(['user', 'season'])
+@Unique(['user', 'season', 'region'])
 export class UserEloEntity extends EloEntity {
   @ManyToOne(() => UserCoreEntity, {
     nullable: false

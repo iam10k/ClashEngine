@@ -286,6 +286,10 @@ export const DOCS_MATCH: ApiDocsInterface<Match> = {
       description: '',
       type: 'integer'
     },
+    regionKey: {
+      description: '',
+      type: 'string'
+    },
     type: {
       description: '',
       enum: [MatchType.PICKUP, MatchType.WAGER, MatchType.SCRIM],
