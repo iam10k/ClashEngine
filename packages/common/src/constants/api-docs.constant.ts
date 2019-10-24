@@ -3,6 +3,8 @@ import { FilterOptions, PagedResponseMeta, PaginationOptions } from '../dtos/cor
 import { Game, GameOption, GamePagedResponse } from '../dtos/game';
 import { Match, MatchFindOptions } from '../dtos/match';
 import { MatchTeam, MatchTeamCreate, MatchTeamMember } from '../dtos/match-team';
+import { Queue, QueueDetailed } from '../dtos/queue';
+import { Region } from '../dtos/region';
 import { SeasonCreate, SeasonDetailed, SeasonOption, SeasonUpdate } from '../dtos/season';
 import { User, UserDetail, UserFindOptions, UsernameHistory, UserPagedResponse } from '../dtos/user';
 import { MatchStatusType, MatchType, Order } from '../enums';
@@ -61,8 +63,7 @@ export const DOCS_PAGED_RESPONSE: ApiDocsInterface<{ meta: PagedResponseMeta }> 
 export const DOCS_AUTH_RESPONSE: ApiDocsInterface<AuthResponse> = {
   PROPS: {
     accessToken: {
-      description: '',
-      type: 'string'
+      description: ''
     },
     user: {
       description: ''
@@ -77,10 +78,13 @@ export const DOCS_AUTH_TOKEN: ApiDocsInterface<AuthToken> = {
       type: 'string'
     },
     expires: {
-      description: ''
+      description: '',
+      type: 'string',
+      format: 'date-time'
     },
     fresh: {
-      description: ''
+      description: '',
+      type: 'boolean'
     }
   }
 };
@@ -98,7 +102,8 @@ export const DOCS_USER_DETAIL: ApiDocsInterface<UserDetail> = {
       type: 'string'
     },
     avatar: {
-      description: ''
+      description: '',
+      type: 'string'
     },
     email: {
       description: '',
@@ -182,10 +187,12 @@ export const DOCS_GAME: ApiDocsInterface<Game> = {
       description: 'Current season of the game'
     },
     teamCount: {
-      description: ''
+      description: '',
+      type: 'integer'
     },
     teamPlayers: {
-      description: ''
+      description: '',
+      type: 'integer'
     }
   }
 };
@@ -318,13 +325,18 @@ export const DOCS_MATCH: ApiDocsInterface<Match> = {
 export const DOCS_MATCH_FIND_OPTIONS: ApiDocsInterface<MatchFindOptions> = {
   PROPS: {
     seasonId: {
-      description: ''
+      description: '',
+      type: 'integer'
     },
     fromDate: {
-      description: ''
+      description: '',
+      type: 'string',
+      format: 'date'
     },
     toDate: {
-      description: ''
+      description: '',
+      type: 'string',
+      format: 'date'
     },
     type: {
       ...DOCS_MATCH.PROPS.type,
@@ -347,13 +359,18 @@ export const DOCS_MATCH_TEAM: ApiDocsInterface<MatchTeam> = {
       description: ''
     },
     score: {
-      description: ''
+      description: '',
+      type: 'integer'
     },
     elo: {
-      description: ''
+      description: '',
+      type: 'number',
+      format: 'double'
     },
     adjustedElo: {
-      description: ''
+      description: '',
+      type: 'number',
+      format: 'double'
     }
   }
 };
@@ -372,6 +389,62 @@ export const DOCS_MATCH_TEAM_MEMBER: ApiDocsInterface<MatchTeamMember> = {
   PROPS: {
     user: {
       description: ''
+    }
+  }
+};
+
+export const DOCS_QUEUE: ApiDocsInterface<Queue> = {
+  PROPS: {
+    gameId: {
+      description: '',
+      type: 'integer'
+    },
+    regionKey: {
+      description: '',
+      type: 'string'
+    },
+    enabled: {
+      description: '',
+      type: 'boolean'
+    }
+  }
+};
+
+export const DOCS_QUEUE_DETAILED: ApiDocsInterface<QueueDetailed> = {
+  PROPS: {
+    game: {
+      description: ''
+    },
+    region: {
+      description: ''
+    },
+    enabled: {
+      description: '',
+      type: 'boolean'
+    },
+    players: {
+      description: ''
+    }
+  }
+};
+
+export const DOCS_REGION: ApiDocsInterface<Region> = {
+  PROPS: {
+    key: {
+      description: '',
+      type: 'string'
+    },
+    name: {
+      description: '',
+      type: 'string'
+    },
+    iso2: {
+      description: '',
+      type: 'string'
+    },
+    enabled: {
+      description: '',
+      type: 'boolean'
     }
   }
 };

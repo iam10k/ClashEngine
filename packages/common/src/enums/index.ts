@@ -3,3 +3,4 @@ export * from './match.type';
 export * from './match-status.type';
 export * from './match-team-member-status.type';
 export * from './order';
+export * from './patch-action';

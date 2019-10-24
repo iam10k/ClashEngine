@@ -62,7 +62,7 @@ function generateUsers(): void {
     const user: UserDetailEntity = new UserDetailEntity();
     user.id = i;
     user.email = faker.internet.email();
-    user.discordId = `${999999999 - i * i}`;
+    user.discordId = `${Number.MAX_SAFE_INTEGER - Math.pow(i, 4)}`;
     user.username = faker.random.boolean() ? username.slice(0, 20) : undefined;
     if (i === 0) {
       user.username = null;

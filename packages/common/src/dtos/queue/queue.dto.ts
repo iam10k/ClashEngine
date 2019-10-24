@@ -1,18 +1,13 @@
-import { Type } from 'class-transformer';
+import { DOCS_QUEUE } from '../../constants';
 import { ClashModelProperty } from '../../decorators';
-import { QueuePlayer } from './queue-player.dto';
 
 export class Queue {
-  @ClashModelProperty()
+  @ClashModelProperty(DOCS_QUEUE.PROPS.gameId)
   public gameId: number;
 
-  @ClashModelProperty()
+  @ClashModelProperty(DOCS_QUEUE.PROPS.regionKey)
   public regionKey: string;
 
-  @ClashModelProperty()
+  @ClashModelProperty(DOCS_QUEUE.PROPS.enabled)
   public enabled: boolean;
-
-  @ClashModelProperty()
-  @Type(() => QueuePlayer)
-  public players: QueuePlayer[];
 }

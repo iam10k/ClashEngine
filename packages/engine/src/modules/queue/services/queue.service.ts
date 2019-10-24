@@ -1,4 +1,4 @@
-import { Queue } from '@clash/common';
+import { Queue, QueueDetailed } from '@clash/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
@@ -9,13 +9,20 @@ import { QueueEntity } from '../entities';
 export class QueueService {
   constructor(@InjectRepository(QueueEntity) private readonly queueRepository: Repository<QueueEntity>) {}
 
-  async getQueues(gameId: number): Promise<Queue[]> {
+  async findQueues(gameId: number): Promise<Queue[]> {
     const queueEntities: QueueEntity[] = await this.queueRepository.find({
-      relations: ['game', 'region', 'players', 'players.elo'],
+      relations: ['game', 'region'],
       where: {
         game: gameId
       }
     });
     return plainToClass(Queue, queueEntities, { excludeExtraneousValues: true });
+  }
+
+  async findQueue(queueId: number): Promise<QueueDetailed> {
+    const queueEntity: QueueEntity = await this.queueRepository.findOne(queueId, {
+      relations: ['game', 'region', 'players', 'players.elo']
+    });
+    return plainToClass(QueueDetailed, queueEntity, { excludeExtraneousValues: true });
   }
 }
